@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>هدية خاصة 🤍</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --pink: #ffbef4;
+      --soft: #fff6fb;
+    }
+    * { box-sizing: border-box; font-family: 'Cairo', sans-serif; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: url('https://i.ibb.co/RTgfBSdx/Beige-Red-Minimalist-Happy-Valentine-s-Day-Love-You-Card-1.png') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(0,0,0,0.75), rgba(0,0,0,0.95));
+      animation: revealDark 2s ease forwards;
+    }
+    @keyframes revealDark {
+      from { opacity: 1; }
+      to { opacity: 0.6; }
+    }
+    .card {
+      position: relative;
+      background: rgba(255,255,255,0.85);
+      border-radius: 24px;
+      padding: 30px 26px;
+      width: min(92%, 420px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      animation: floatIn 1.2s ease forwards;
+    }
+    @keyframes floatIn {
+      from { transform: translateY(30px) scale(0.95); opacity: 0; }
+      to { transform: translateY(0) scale(1); opacity: 1; }
+    }
+    h1 {
+      margin: 0 0 14px;
+      text-align: center;
+      color: #333;
+    }
+    .hint {
+      text-align: center;
+      color: #777;
+      margin-bottom: 18px;
+      font-size: 14px;
+    }
+    .lock {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+    input {
+      width: 180px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 2px solid var(--pink);
+      outline: none;
+      font-size: 16px;
+      text-align: center;
+    }
+    button {
+      padding: 12px 18px;
+      border-radius: 14px;
+      border: none;
+      background: var(--pink);
+      color: #333;
+      font-size: 16px;
+      cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    }
+    button:hover { transform: translateY(-2px); box-shadow: 0 12px 22px rgba(0,0,0,0.18); }
+
+    .message {
+      display: none;
+      animation: fadeUp 1.2s ease forwards;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .letter {
+      background: var(--soft);
+      border-radius: 20px;
+      padding: 22px;
+      line-height: 1.9;
+      color: #333;
+      box-shadow: inset 0 0 0 2px var(--pink);
+    }
+    .fromto {
+      margin-bottom: 12px;
+      font-weight: 700;
+      color: #444;
+    }
+    .heart {
+      text-align: center;
+      font-size: 26px;
+      margin-top: 14px;
+      animation: pulse 1.6s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+    .error {
+      text-align: center;
+      color: #e0558a;
+      margin-top: 10px;
+      display: none;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+
+  <div class="card" id="lockCard" style="animation: floatIn 1.2s ease forwards, pulse 2.5s infinite;">
+    <h1>شيء مخفي 🤍</h1>
+    <div class="hint">الكلمة موجودة في كرت الإهداء</div>
+    <div class="lock">
+      <input type="password" id="password" placeholder="•••" />
+      <button id="openBtn">فتح</button>
+    </div>
+    <div class="error" id="error">الكلمة غير صحيحة… جربي مرة ثانية 🤍</div>
+  </div>
+
+  <div class="card message" id="messageCard" style="animation: fadeUp 1.4s ease forwards;">
+    <div class="letter">
+      <div class="fromto">من : نايف<br>إلى حبيبة قلبي ودنيتي : راما</div>
+      <p>
+        أتمنى أن الهدية عجبتك 🤍<br>
+        والله حاولت أعرف وش أكثر شيء بتحبينه، وهذا اللي طلع معي.
+        وبستغربين ليه التوقيت هذا بالضبط…
+        الحقيقة كنت مخطط لها تكون في 14 فبراير،
+        لكن أنا ما عندي يوم اسمه يوم حب،
+        أنا كل أيامي معك حب، ويزداد حبي لك كل يوم وساعة ودقيقة وثانية.
+        وعاد ما أطول عليك بالكلام…
+      </p>
+      <p style="font-weight:700; text-align:center;">
+        أهديك: «أحبك حب خلاني أبيع الدنيا من أجلك» 🫶🤍
+      </p>
+    </div>
+    <div class="heart">🤍</div>
+  </div>
+
+  <!-- استبدل رابط الصوت بالأغنية اللي تحبينها -->
+  <audio id="song" src="song6.mp3"></audio>
+
+  <div class="volume-controls" style="position:fixed;bottom:20px;left:20px;display:none;gap:10px;z-index:10;">
+    <button id="volDown">−</button>
+    <button id="volUp">＋</button>
+  </div>
+
+  <script>
+    const correctPassword = '143';
+
+    const btn = document.getElementById('openBtn');
+    const inputField = document.getElementById('password');
+
+    btn.addEventListener('click', unlock);
+    inputField.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') unlock();
+    });
+
+    function unlock() {
+      const input = inputField.value.trim();
+      const error = document.getElementById('error');
+
+      if (input === correctPassword) {
+        error.style.display = 'none';
+
+        const overlay = document.querySelector('.overlay');
+        overlay.style.animation = 'fadeAway 1.6s ease forwards';
+        setTimeout(() => overlay.style.display = 'none', 1600);
+
+        const lock = document.getElementById('lockCard');
+        lock.style.display = 'none';
+
+        const msg = document.getElementById('messageCard');
+        msg.style.display = 'block';
+        document.querySelector('.volume-controls').style.display = 'flex';
+
+        const song = document.getElementById('song');
+        song.currentTime = 25;
+        song.volume = 0.8;
+        song.play().catch(() => {});
+      } else {
+        error.style.display = 'block';
+      }
+    }
+
+    const style = document.createElement('style');
+    style.innerHTML = `@keyframes fadeAway { from { opacity: 0.6; } to { opacity: 0; } }`;
+    document.head.appendChild(style);
+
+    const volUp = document.getElementById('volUp');
+    const volDown = document.getElementById('volDown');
+
+    volUp.addEventListener('click', () => {
+      song.volume = Math.min(1, song.volume + 0.1);
+    });
+
+    volDown.addEventListener('click', () => {
+      song.volume = Math.max(0, song.volume - 0.1);
+    });
+  </script>
+</body>
+</html>
